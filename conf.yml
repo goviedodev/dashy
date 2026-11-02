@@ -72,10 +72,9 @@ sections:
         icon: fas fa-users
         statusCheck: true
 
-  - name: Te Llevo App
+  - name: Te Llevo App — 1. Producción (Web y Sitios Públicos)
     icon: fas fa-car-side
     items:
-      # --- Producción: Sitios Web y Aplicaciones Públicas ---
       - title: TeLlevo Landing (Producción)
         description: Sitio web oficial de Te Llevo App en producción (Elixir/Phoenix LiveView)
         url: https://www.tellevoapp.cl
@@ -120,7 +119,9 @@ sections:
         tags: [produccion, cloudflare, discovery]
         statusCheck: true
 
-      # --- Producción: Load Balancers GCP / Microservicios ---
+  - name: Te Llevo App — 2. Producción (Load Balancers GCP)
+    icon: fas fa-cloud
+    items:
       - title: Core Empresas LB (Prod)
         description: Load Balancer GCP de core-empresas (34.54.114.178 -> Cloud Run :7080)
         url: http://lb-core.tellevoapp.cl/actuator/health
@@ -164,7 +165,9 @@ sections:
         tags: [produccion, gcp, landing]
         statusCheck: false
 
-      # --- Entorno QA y Herramientas en gonzalo-asus (192.168.100.14) ---
+  - name: Te Llevo App — 3. Entorno QA y Herramientas (gonzalo-asus)
+    icon: fas fa-flask
+    items:
       - title: Autowebapp QA (asus :4100)
         description: Aplicación web PWA TeLlevo en entorno QA sobre gonzalo-asus (Puerto 4100)
         url: http://192.168.100.14:4100
@@ -251,7 +254,9 @@ sections:
         tags: [qa, asus, calidad]
         statusCheck: false
 
-      # --- Túneles / Dominios Fallback Cloudflare (asus-*.tellevoapp.cl) ---
+  - name: Te Llevo App — 4. Dominios Fallback (Cloudflare)
+    icon: fas fa-shield-alt
+    items:
       - title: HTMLs QA (Cloudflare)
         description: Acceso público HTTPS al servicio HTMLs en QA (qa-html.tellevoapp.cl)
         url: https://qa-html.tellevoapp.cl/htmls/tellevoapp/contratos/terminos-condiciones
@@ -295,7 +300,9 @@ sections:
         tags: [cloudflare, fallback, images]
         statusCheck: false
 
-      # --- Repositorios GitHub del Ecosistema Te Llevo App ---
+  - name: Te Llevo App — 5. Repositorios GitHub
+    icon: fab fa-github
+    items:
       - title: Repo CTO — Orquestador Principal
         description: Repositorio raíz de orquestación, documentación y specs (goviedodev/cto)
         url: https://github.com/goviedodev/cto
