@@ -1,0 +1,7 @@
+# Clon upstream y artefactos de compilación de Dashy (Lissy93/dashy)
+app/
+
+# Archivos temporales y paquetes
+*.tar.gz
+*.log
+.DS_Store

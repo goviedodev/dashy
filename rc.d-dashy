@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# PROVIDE: dashy
+# REQUIRE: LOGIN NETWORKING
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="dashy"
+rcvar="dashy_enable"
+
+load_rc_config $name
+
+: ${dashy_enable:="NO"}
+: ${dashy_port:="4000"}
+: ${dashy_host:="0.0.0.0"}
+: ${dashy_datadir:="/var/db/dashy"}
+: ${dashy_dir:="/usr/local/dashy"}
+: ${dashy_log:="/var/log/dashy.log"}
+
+pidfile="/var/run/${name}.pid"
+dashy_chdir="${dashy_dir}"
+dashy_env="NODE_ENV=production PORT=${dashy_port} HOST=${dashy_host} USER_DATA_DIR=${dashy_datadir} PATH=/usr/local/bin:/usr/bin:/bin"
+
+command="/usr/sbin/daemon"
+command_args="-f -r -P ${pidfile} -o ${dashy_log} /usr/local/bin/node ${dashy_dir}/server.js"
+
+run_rc_command "$1"

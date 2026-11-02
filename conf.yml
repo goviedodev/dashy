@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Lissy93/dashy/master/src/utils/config/ConfigSchema.json
+---
+pageInfo:
+  title: Panel de Servicios — Gonzalo Oviedo
+  description: Acceso centralizado a servicios en acer (FreeBSD Jails) y gonzalo-asus (Tailscale / LAN)
+  navLinks:
+    - title: Dashy (Tailscale)
+      path: http://gonzalo-asus:7777
+    - title: Dashy (LAN)
+      path: http://dashy:4000
+    - title: Documentación Dashy
+      path: https://dashy.to/docs
+
+appConfig:
+  theme: colorful
+  layout: auto
+  iconSize: medium
+  language: es
+  statusCheck: true
+  statusCheckInterval: 60
+
+sections:
+  - name: FreeBSD Jails (acer - 192.168.100.97)
+    icon: fas fa-server
+    items:
+      - title: Dashy
+        description: Dashboard centralizado en jail FreeBSD iocage (192.168.100.103:4000 / Tailscale :7777)
+        url: http://gonzalo-asus:7777
+        icon: fas fa-th-large
+        statusCheck: true
+      - title: Préstamos (Tailscale / Túnel SSH)
+        description: Sistema de préstamos en jail FreeBSD iocage (prestamos:14000 vía gonzalo-asus:14000)
+        url: http://gonzalo-asus:14000
+        icon: fas fa-hand-holding-usd
+        statusCheck: true
+      - title: Demo VentasMP (Cloudflare)
+        description: ERP VentasMP en jail FreeBSD iocage (192.168.100.102:8788)
+        url: https://demo-ventasmp.sevenit.cl
+        icon: fas fa-shopping-cart
+        statusCheck: true
+      - title: Demo VentasMP (LAN)
+        description: Acceso directo LAN al jail demo-ventasmp (192.168.100.102:8788)
+        url: http://192.168.100.102:8788
+        icon: fas fa-network-wired
+        statusCheck: true
+
+  - name: Servicios en gonzalo-asus (192.168.100.14 / Tailscale)
+    icon: fas fa-laptop-code
+    items:
+      - title: F29
+        description: Aplicación F29 (Contenedores / Puerto 5174)
+        url: http://192.168.100.14:5174
+        icon: fas fa-file-invoice-dollar
+        statusCheck: true
+      - title: Reloj Control
+        description: Sistema de control de asistencia (Puerto 5173)
+        url: http://192.168.100.14:5173
+        icon: fas fa-clock
+        statusCheck: true
+      - title: Mis Redes Sociales
+        description: Servicio web en contenedor Docker (Puerto 4000 en gonzalo-asus)
+        url: http://192.168.100.14:4000
+        icon: fas fa-share-alt
+        statusCheck: true
+      - title: Maranatha CRM
+        description: CRM Maranatha (Puerto 8787 en gonzalo-asus)
+        url: http://192.168.100.14:8787
+        icon: fas fa-users
+        statusCheck: true
