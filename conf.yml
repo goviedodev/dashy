@@ -2,12 +2,16 @@
 ---
 pageInfo:
   title: Panel de Servicios — Gonzalo Oviedo
-  description: Acceso centralizado a servicios en acer (FreeBSD Jails) y gonzalo-asus (Tailscale / LAN)
+  description: Acceso centralizado a servicios en acer (FreeBSD Jails), gonzalo-asus (Tailscale / LAN) y ecosistema Te Llevo App
   navLinks:
     - title: Dashy (Tailscale)
       path: http://gonzalo-asus:7777
     - title: Dashy (LAN)
       path: http://dashy:4000
+    - title: TeLlevo Web
+      path: https://www.tellevoapp.cl
+    - title: TeLlevo App
+      path: https://app.tellevoapp.cl
     - title: Documentación Dashy
       path: https://dashy.to/docs
 
@@ -67,3 +71,354 @@ sections:
         url: http://192.168.100.14:8787
         icon: fas fa-users
         statusCheck: true
+
+  - name: Te Llevo App
+    icon: fas fa-car-side
+    items:
+      # --- Producción: Sitios Web y Aplicaciones Públicas ---
+      - title: TeLlevo Landing (Producción)
+        description: Sitio web oficial de Te Llevo App en producción (Elixir/Phoenix LiveView)
+        url: https://www.tellevoapp.cl
+        icon: fas fa-globe-americas
+        tags: [produccion, web, landing]
+        statusCheck: true
+      - title: TeLlevo Landing — Activar Cuenta
+        description: Flujo de registro y activación de usuarios (/activate)
+        url: https://www.tellevoapp.cl/activate
+        icon: fas fa-user-check
+        tags: [produccion, web, landing]
+        statusCheck: true
+      - title: TeLlevo Landing — Simulación
+        description: Simulador interactivo de viajes compartidos y ahorro CO2 (/simulacion)
+        url: https://www.tellevoapp.cl/simulacion
+        icon: fas fa-route
+        tags: [produccion, web, landing]
+        statusCheck: true
+      - title: TeLlevo Landing — Empresas
+        description: Portal comercial de movilidad corporativa para empresas (/empresas)
+        url: https://www.tellevoapp.cl/empresas
+        icon: fas fa-building
+        tags: [produccion, web, landing]
+        statusCheck: true
+      - title: TeLlevo Web App (Producción)
+        description: PWA de pasajeros y conductores en producción (autowebapp - Elixir/Phoenix LiveView)
+        url: https://app.tellevoapp.cl
+        statusCheckUrl: https://app.tellevoapp.cl/health
+        icon: fas fa-mobile-alt
+        tags: [produccion, pwa, autowebapp]
+        statusCheck: true
+      - title: TeLlevo Web App — Healthcheck
+        description: Endpoint de salud de autowebapp en producción (/health)
+        url: https://app.tellevoapp.cl/health
+        icon: fas fa-heartbeat
+        tags: [produccion, health, autowebapp]
+        statusCheck: true
+      - title: Discovery Worker (Cloudflare)
+        description: Cloudflare Worker de Service Discovery para apps móviles y web (/health)
+        url: https://tellevo-discovery.desarrollo-501.workers.dev/health
+        icon: fas fa-compass
+        tags: [produccion, cloudflare, discovery]
+        statusCheck: true
+
+      # --- Producción: Load Balancers GCP / Microservicios ---
+      - title: Core Empresas LB (Prod)
+        description: Load Balancer GCP de core-empresas (34.54.114.178 -> Cloud Run :7080)
+        url: http://lb-core.tellevoapp.cl/actuator/health
+        icon: fas fa-cogs
+        tags: [produccion, gcp, backend, core]
+        statusCheck: false
+      - title: Login LB (Prod)
+        description: Load Balancer GCP de login y autenticación PIN (136.110.128.252 -> Cloud Run :7083)
+        url: http://lb-login.tellevoapp.cl/actuator/health
+        icon: fas fa-key
+        tags: [produccion, gcp, backend, login]
+        statusCheck: false
+      - title: Pagos LB (Prod)
+        description: Load Balancer GCP de pasarela de pagos Khipu (34.96.110.43 -> Cloud Run :7081)
+        url: http://lb-pagos.tellevoapp.cl/actuator/health
+        icon: fas fa-credit-card
+        tags: [produccion, gcp, backend, pagos]
+        statusCheck: false
+      - title: HTMLs / Contratos LB (Prod)
+        description: Load Balancer GCP de términos y condiciones (34.107.180.110 -> Cloud Run :7082)
+        url: http://lb-htmls.tellevoapp.cl/htmls/tellevoapp/contratos/terminos-condiciones
+        icon: fas fa-file-contract
+        tags: [produccion, gcp, backend, htmls]
+        statusCheck: false
+      - title: Images Server LB (Prod)
+        description: Load Balancer GCP del servidor de imágenes con GCS (34.110.219.81 -> Cloud Run :4000)
+        url: http://lb-images.tellevoapp.cl/actuator/health
+        icon: fas fa-images
+        tags: [produccion, gcp, backend, images]
+        statusCheck: false
+      - title: Notificaciones LB (Prod)
+        description: Load Balancer GCP de notificaciones Web Push y WhatsApp (Cloud Run :7084)
+        url: http://lb-notificaciones.tellevoapp.cl/actuator/health
+        icon: fas fa-bell
+        tags: [produccion, gcp, backend, notificaciones]
+        statusCheck: false
+      - title: Landing LB (Prod)
+        description: Load Balancer GCP de tellevo-landing (Cloud Run :4000)
+        url: http://lb-landing.tellevoapp.cl
+        icon: fas fa-network-wired
+        tags: [produccion, gcp, landing]
+        statusCheck: false
+
+      # --- Entorno QA y Herramientas en gonzalo-asus (192.168.100.14) ---
+      - title: Autowebapp QA (asus :4100)
+        description: Aplicación web PWA TeLlevo en entorno QA sobre gonzalo-asus (Puerto 4100)
+        url: http://192.168.100.14:4100
+        statusCheckUrl: http://192.168.100.14:4100/health
+        icon: fas fa-car
+        tags: [qa, asus, autowebapp]
+        statusCheck: true
+      - title: TeLlevo Landing QA (asus :4001)
+        description: Sitio web institucional TeLlevo en entorno QA sobre gonzalo-asus (Puerto 4001)
+        url: http://192.168.100.14:4001
+        icon: fas fa-window-maximize
+        tags: [qa, asus, landing]
+        statusCheck: true
+      - title: Visor de Coincidencias V2 QA (asus :4300)
+        description: Visor administrativo en vivo de coincidencias conductor-pasajero con motor V2 (Puerto 4300)
+        url: http://192.168.100.14:4300
+        icon: fas fa-map-marked-alt
+        tags: [qa, asus, admin, coincidencias]
+        statusCheck: true
+      - title: En-Ruta Viewer V1 (asus :12000)
+        description: Visor histórico de rutas y coincidencias PostGIS (Puerto 12000)
+        url: http://192.168.100.14:12000
+        icon: fas fa-map-signs
+        tags: [qa, asus, admin]
+        statusCheck: true
+      - title: Documentación HTML TeLlevo (asus :9997)
+        description: Servidor web de documentación técnica generada del proyecto TeLlevo (html-viewer :9997)
+        url: http://192.168.100.14:9997
+        icon: fas fa-book-open
+        tags: [qa, asus, docs]
+        statusCheck: true
+      - title: Core Empresas QA (asus :7080)
+        description: Microservicio core-empresas en QA (Spring Boot :7080 - Healthcheck)
+        url: http://192.168.100.14:7080/actuator/health
+        icon: fas fa-server
+        tags: [qa, asus, backend, core]
+        statusCheck: true
+      - title: Pagos QA (asus :7081)
+        description: Microservicio pagos Khipu en QA (Spring Boot :7081 - Healthcheck)
+        url: http://192.168.100.14:7081/actuator/health
+        icon: fas fa-money-check-alt
+        tags: [qa, asus, backend, pagos]
+        statusCheck: true
+      - title: HTMLs / Términos QA (asus :7082)
+        description: Microservicio de términos y condiciones legales en QA (Puerto 7082)
+        url: http://192.168.100.14:7082/htmls/tellevoapp/contratos/terminos-condiciones
+        icon: fas fa-file-alt
+        tags: [qa, asus, backend, htmls]
+        statusCheck: true
+      - title: Login QA (asus :7083)
+        description: Microservicio de login y envío de PIN en QA (Spring Boot :7083 - Healthcheck)
+        url: http://192.168.100.14:7083/actuator/health
+        icon: fas fa-user-shield
+        tags: [qa, asus, backend, login]
+        statusCheck: true
+      - title: Notificaciones QA (asus :7084)
+        description: Microservicio de notificaciones Web Push y WhatsApp en QA (REST :7084 / gRPC :9090)
+        url: http://192.168.100.14:7084/actuator/health
+        icon: fas fa-bell
+        tags: [qa, asus, backend, notificaciones]
+        statusCheck: true
+      - title: Promociones QA (asus :7085)
+        description: Microservicio de elegibilidad de promociones y Primer Viaje Gratis en QA (Puerto 7085)
+        url: http://192.168.100.14:7085/actuator/health
+        icon: fas fa-tags
+        tags: [qa, asus, backend, promociones]
+        statusCheck: true
+      - title: Evolution API WhatsApp QA (asus :7086)
+        description: Pasarela Evolution API v2 (Baileys) para notificaciones por WhatsApp en QA (Puerto 7086)
+        url: http://192.168.100.14:7086
+        icon: fab fa-whatsapp
+        tags: [qa, asus, whatsapp, notificaciones]
+        statusCheck: true
+      - title: Captura de Perfiles (Local :4500)
+        description: Herramienta offline para jornadas de captura de perfiles de conductores y pasajeros (Puerto 4500)
+        url: http://127.0.0.1:4500
+        icon: fas fa-id-card
+        tags: [local, herramientas, perfiles]
+        statusCheck: false
+      - title: SonarQube Local (asus :9000)
+        description: Servidor local de análisis estático de calidad y cobertura para microservicios TeLlevo (Puerto 9000)
+        url: http://192.168.100.14:9000
+        icon: fas fa-check-double
+        tags: [qa, asus, calidad]
+        statusCheck: false
+
+      # --- Túneles / Dominios Fallback Cloudflare (asus-*.tellevoapp.cl) ---
+      - title: HTMLs QA (Cloudflare)
+        description: Acceso público HTTPS al servicio HTMLs en QA (qa-html.tellevoapp.cl)
+        url: https://qa-html.tellevoapp.cl/htmls/tellevoapp/contratos/terminos-condiciones
+        icon: fas fa-cloud
+        tags: [cloudflare, qa, htmls]
+        statusCheck: false
+      - title: HTMLs Dev (Cloudflare)
+        description: Acceso público HTTPS al servicio HTMLs en Dev (dev-html.tellevoapp.cl)
+        url: https://dev-html.tellevoapp.cl/htmls/tellevoapp/contratos/terminos-condiciones
+        icon: fas fa-cloud
+        tags: [cloudflare, dev, htmls]
+        statusCheck: false
+      - title: Asus Core (Cloudflare Fallback)
+        description: Endpoint fallback de Core en Cloudflare (asus-core.tellevoapp.cl)
+        url: https://asus-core.tellevoapp.cl/actuator/health
+        icon: fas fa-shield-alt
+        tags: [cloudflare, fallback, core]
+        statusCheck: false
+      - title: Asus Login (Cloudflare Fallback)
+        description: Endpoint fallback de Login en Cloudflare (asus-login.tellevoapp.cl)
+        url: https://asus-login.tellevoapp.cl/actuator/health
+        icon: fas fa-shield-alt
+        tags: [cloudflare, fallback, login]
+        statusCheck: false
+      - title: Asus Pagos (Cloudflare Fallback)
+        description: Endpoint fallback de Pagos en Cloudflare (asus-pagos.tellevoapp.cl)
+        url: https://asus-pagos.tellevoapp.cl/actuator/health
+        icon: fas fa-shield-alt
+        tags: [cloudflare, fallback, pagos]
+        statusCheck: false
+      - title: Asus HTMLs (Cloudflare Fallback)
+        description: Endpoint fallback de HTMLs en Cloudflare (asus-htmls.tellevoapp.cl)
+        url: https://asus-htmls.tellevoapp.cl/htmls/tellevoapp/contratos/terminos-condiciones
+        icon: fas fa-shield-alt
+        tags: [cloudflare, fallback, htmls]
+        statusCheck: false
+      - title: Asus Images (Cloudflare Fallback)
+        description: Endpoint fallback de Images Server en Cloudflare (asus-images.tellevoapp.cl)
+        url: https://asus-images.tellevoapp.cl/actuator/health
+        icon: fas fa-shield-alt
+        tags: [cloudflare, fallback, images]
+        statusCheck: false
+
+      # --- Repositorios GitHub del Ecosistema Te Llevo App ---
+      - title: Repo CTO — Orquestador Principal
+        description: Repositorio raíz de orquestación, documentación y specs (goviedodev/cto)
+        url: https://github.com/goviedodev/cto
+        icon: fab fa-github
+        tags: [github, repo, cto]
+        statusCheck: false
+      - title: Repo Autowebapp (PWA)
+        description: Repositorio de la aplicación web Elixir/Phoenix LiveView (goviedodev/tellevo-webapp)
+        url: https://github.com/goviedodev/tellevo-webapp
+        icon: fab fa-github
+        tags: [github, repo, elixir, autowebapp]
+        statusCheck: false
+      - title: Repo TeLlevo Landing
+        description: Repositorio del sitio web institucional y registro (goviedodev/tellevo-landing)
+        url: https://github.com/goviedodev/tellevo-landing
+        icon: fab fa-github
+        tags: [github, repo, elixir, landing]
+        statusCheck: false
+      - title: Repo Core Empresas
+        description: Repositorio del microservicio principal de negocio en Spring Boot (goviedodev/tellevo-core)
+        url: https://github.com/goviedodev/tellevo-core
+        icon: fab fa-github
+        tags: [github, repo, java, core]
+        statusCheck: false
+      - title: Repo Login Service
+        description: Repositorio del microservicio de autenticación y PIN (goviedodev/tellevo-login)
+        url: https://github.com/goviedodev/tellevo-login
+        icon: fab fa-github
+        tags: [github, repo, java, login]
+        statusCheck: false
+      - title: Repo Pagos Service
+        description: Repositorio del microservicio de pagos con Khipu (goviedodev/tellevo-pagos)
+        url: https://github.com/goviedodev/tellevo-pagos
+        icon: fab fa-github
+        tags: [github, repo, java, pagos]
+        statusCheck: false
+      - title: Repo HTMLs Service
+        description: Repositorio del microservicio de contratos y términos legales (goviedodev/tellevo-htmls)
+        url: https://github.com/goviedodev/tellevo-htmls
+        icon: fab fa-github
+        tags: [github, repo, java, htmls]
+        statusCheck: false
+      - title: Repo Notificaciones Service
+        description: Repositorio del microservicio de notificaciones Web Push, gRPC y WhatsApp (goviedodev/tellevo-notificaciones)
+        url: https://github.com/goviedodev/tellevo-notificaciones
+        icon: fab fa-github
+        tags: [github, repo, java, notificaciones]
+        statusCheck: false
+      - title: Repo Images Server
+        description: Repositorio del servidor de imágenes con Google Cloud Storage (goviedodev/tl-image-server)
+        url: https://github.com/goviedodev/tl-image-server
+        icon: fab fa-github
+        tags: [github, repo, java, images]
+        statusCheck: false
+      - title: Repo Discovery Worker
+        description: Repositorio del Cloudflare Worker de Service Discovery (goviedodev/discovery-worker)
+        url: https://github.com/goviedodev/discovery-worker
+        icon: fab fa-github
+        tags: [github, repo, cloudflare, discovery]
+        statusCheck: false
+      - title: Repo Infraestructura (Pulumi)
+        description: Repositorio de Infraestructura como Código para GCP y Cloudflare (goviedodev/infraestructura)
+        url: https://github.com/goviedodev/infraestructura
+        icon: fab fa-github
+        tags: [github, repo, pulumi, gcp]
+        statusCheck: false
+      - title: Repo Conductor App (Flutter)
+        description: Repositorio de la aplicación móvil Flutter para conductores (goviedodev/tellevo-conductor)
+        url: https://github.com/goviedodev/tellevo-conductor
+        icon: fab fa-github
+        tags: [github, repo, flutter, conductor]
+        statusCheck: false
+      - title: Repo Pasajero App (Flutter)
+        description: Repositorio de la aplicación móvil Flutter para pasajeros (goviedodev/tellevo-pasajero)
+        url: https://github.com/goviedodev/tellevo-pasajero
+        icon: fab fa-github
+        tags: [github, repo, flutter, pasajero]
+        statusCheck: false
+      - title: Repo Visor de Coincidencias V2
+        description: Repositorio del visor administrativo de coincidencias en vivo (goviedodev/tellevo-visor-coincidencias)
+        url: https://github.com/goviedodev/tellevo-visor-coincidencias
+        icon: fab fa-github
+        tags: [github, repo, elixir, coincidencias]
+        statusCheck: false
+      - title: Repo Captura de Perfiles
+        description: Repositorio de la herramienta offline de captura de perfiles (goviedodev/tellevo-perfiles)
+        url: https://github.com/goviedodev/tellevo-perfiles
+        icon: fab fa-github
+        tags: [github, repo, node, perfiles]
+        statusCheck: false
+      - title: Repo Encuesta de Movilidad
+        description: Repositorio de encuestas de movilidad corporativa (goviedodev/tellevo-encuestas)
+        url: https://github.com/goviedodev/tellevo-encuestas
+        icon: fab fa-github
+        tags: [github, repo, encuestas]
+        statusCheck: false
+      - title: Repo Base de Datos (tellevo-bd)
+        description: Repositorio de scripts SQL, respaldos y utilidades de BD (goviedodev/tellevo-bd)
+        url: https://github.com/goviedodev/tellevo-bd
+        icon: fab fa-github
+        tags: [github, repo, postgres, bd]
+        statusCheck: false
+      - title: Repo Misc Auxiliares
+        description: Repositorio de herramientas auxiliares del ecosistema TeLlevo (goviedodev/tellevo-misc)
+        url: https://github.com/goviedodev/tellevo-misc
+        icon: fab fa-github
+        tags: [github, repo, misc]
+        statusCheck: false
+      - title: Repo En-Ruta Viewer V1
+        description: Repositorio del visor de rutas original (goviedodev/tellevo-admin-en-ruta-viewer)
+        url: https://github.com/goviedodev/tellevo-admin-en-ruta-viewer
+        icon: fab fa-github
+        tags: [github, repo, viewer]
+        statusCheck: false
+      - title: Repo USS Datos
+        description: Repositorio de procesamiento de datos Universidad San Sebastián (tellevo/uss-datos)
+        url: https://github.com/tellevo/uss-datos
+        icon: fab fa-github
+        tags: [github, repo, uss]
+        statusCheck: false
+      - title: Repo IA BD Streamlit
+        description: Repositorio del asistente de consultas a base de datos con IA (tellevo/ia-bd)
+        url: https://github.com/tellevo/ia-bd
+        icon: fab fa-github
+        tags: [github, repo, ia, streamlit]
+        statusCheck: false
