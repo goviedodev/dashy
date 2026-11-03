@@ -27,25 +27,65 @@ sections:
   - name: FreeBSD Jails (acer - 192.168.100.97)
     icon: fas fa-server
     items:
-      - title: Dashy
+      - title: Dashy (Tailscale :7777)
         description: Dashboard centralizado en jail FreeBSD iocage (192.168.100.103:4000 / Tailscale :7777)
         url: http://gonzalo-asus:7777
         icon: fas fa-th-large
+        tags: [freebsd, jail, dashy, tailscale]
         statusCheck: true
-      - title: Préstamos (Tailscale / Túnel SSH)
-        description: Sistema de préstamos en jail FreeBSD iocage (prestamos:14000 vía gonzalo-asus:14000)
+      - title: Préstamos (Tailscale :14000)
+        description: Sistema de préstamos Elixir/Phoenix en jail FreeBSD iocage (192.168.100.101:14000 vía gonzalo-asus:14000)
         url: http://gonzalo-asus:14000
         icon: fas fa-hand-holding-usd
+        tags: [freebsd, jail, prestamos, tailscale]
         statusCheck: true
       - title: Demo VentasMP (Cloudflare)
-        description: ERP VentasMP en jail FreeBSD iocage (192.168.100.102:8788)
+        description: ERP VentasMP en jail FreeBSD iocage (192.168.100.102:8788 -> demo-ventasmp.sevenit.cl)
         url: https://demo-ventasmp.sevenit.cl
         icon: fas fa-shopping-cart
+        tags: [freebsd, jail, ventasmp, cloudflare]
         statusCheck: true
-      - title: Demo VentasMP (LAN)
+      - title: Demo VentasMP (Tailscale :8789)
+        description: ERP VentasMP en jail FreeBSD iocage vía túnel SSH (gonzalo-asus:8789 -> 192.168.100.102:8788)
+        url: http://gonzalo-asus:8789
+        icon: fas fa-network-wired
+        tags: [freebsd, jail, ventasmp, tailscale]
+        statusCheck: true
+      - title: Demo VentasMP (LAN :8788)
         description: Acceso directo LAN al jail demo-ventasmp (192.168.100.102:8788)
         url: http://192.168.100.102:8788
-        icon: fas fa-network-wired
+        icon: fas fa-ethernet
+        tags: [freebsd, jail, ventasmp, lan]
+        statusCheck: true
+      - title: Demo Maranatha CRM (Cloudflare)
+        description: CRM Maranatha en jail FreeBSD iocage (192.168.100.104:8787 -> demo-marana.limachelocales.cl)
+        url: https://demo-marana.limachelocales.cl
+        icon: fas fa-users
+        tags: [freebsd, jail, maranatha, cloudflare]
+        statusCheck: true
+      - title: Demo Maranatha CRM (Tailscale :8787)
+        description: CRM Maranatha en jail FreeBSD iocage vía túnel SSH (gonzalo-asus:8787 -> 192.168.100.104:8787)
+        url: http://gonzalo-asus:8787
+        icon: fas fa-address-book
+        tags: [freebsd, jail, maranatha, tailscale]
+        statusCheck: true
+      - title: Demo Maranatha CRM (LAN :8787)
+        description: Acceso directo LAN al jail demo-marana (192.168.100.104:8787)
+        url: http://192.168.100.104:8787
+        icon: fas fa-ethernet
+        tags: [freebsd, jail, maranatha, lan]
+        statusCheck: true
+      - title: Prueba1 Phoenix (Tailscale :4002)
+        description: App Elixir/Phoenix en jail FreeBSD iocage prueba1 vía túnel SSH (gonzalo-asus:4002 -> 192.168.100.100:4002)
+        url: http://gonzalo-asus:4002
+        icon: fas fa-vial
+        tags: [freebsd, jail, prueba1, tailscale]
+        statusCheck: true
+      - title: Prueba1 Phoenix (LAN :4002)
+        description: Acceso directo LAN al jail prueba1 (192.168.100.100:4002)
+        url: http://192.168.100.100:4002
+        icon: fas fa-ethernet
+        tags: [freebsd, jail, prueba1, lan]
         statusCheck: true
 
   - name: Servicios en gonzalo-asus (192.168.100.14 / Tailscale)
@@ -66,10 +106,20 @@ sections:
         url: http://192.168.100.14:4000
         icon: fas fa-share-alt
         statusCheck: true
-      - title: Maranatha CRM
-        description: CRM Maranatha (Puerto 8787 en gonzalo-asus)
-        url: http://192.168.100.14:8787
-        icon: fas fa-users
+      - title: VentasMP QA (asus :8788)
+        description: Entorno QA de ERP VentasMP en Docker sobre gonzalo-asus (Puerto 8788)
+        url: http://192.168.100.14:8788
+        icon: fas fa-cash-register
+        statusCheck: true
+      - title: Ley Datos Personales (asus :13000)
+        description: Aplicación Ley de Datos Personales en Docker sobre gonzalo-asus (Puerto 13000)
+        url: http://192.168.100.14:13000
+        icon: fas fa-balance-scale
+        statusCheck: true
+      - title: Scraping Pharma (asus :4200)
+        description: Aplicación Scraping Pharma en Docker sobre gonzalo-asus (Puerto 4200)
+        url: http://192.168.100.14:4200
+        icon: fas fa-pills
         statusCheck: true
 
   - name: Te Llevo App — 1. Producción (Web y Sitios Públicos)
