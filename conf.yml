@@ -285,6 +285,12 @@ sections:
         icon: fas fa-tags
         tags: [qa, asus, backend, promociones]
         statusCheck: true
+      - title: Marketing / Promociones Frontend (asus :4010)
+        description: Panel de campañas, bandeja de matches y plantillas de marketing en Elixir/Phoenix LiveView (Puerto 4010)
+        url: http://192.168.100.14:4010
+        icon: fas fa-bullhorn
+        tags: [qa, asus, frontend, promociones, marketing, elixir]
+        statusCheck: true
       - title: Evolution API WhatsApp QA (asus :7086)
         description: Pasarela Evolution API v2 (Baileys) para notificaciones por WhatsApp en QA (Puerto 7086)
         url: http://192.168.100.14:7086
